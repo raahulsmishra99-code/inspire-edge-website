@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Wifi, Cloud, Zap, Shield, Globe, BarChart3, Users } from 'lucide-react'
+import { Wifi, Cloud, Zap, Shield, Globe, BarChart3, Users, Sun } from 'lucide-react'
 
 export default function ServicesSection() {
   const ref = useRef(null)
@@ -30,15 +30,21 @@ export default function ServicesSection() {
     },
     {
       icon: Zap,
-      title: "Process Creation",
-      description: "Designing and implementing efficient business processes to optimize operations.",
-      features: ["Process optimization", "Workflow design", "Automation solutions"]
+      title: "Optimisation",
+      description: "Improving existing business processes to maximize efficiency and performance.",
+      features: ["Process analysis", "Process creation", "Workflow optimisation", "Automation enablement"]
     },
     {
       icon: Globe,
       title: "Outsourcing Services",
       description: "Comprehensive manpower supply and outsourcing solutions for business efficiency.",
       features: ["Staff augmentation", "Project outsourcing", "Managed services"]
+    },
+    {
+      icon: Sun,
+      title: "Solar Power Services",
+      description: "End-to-end solar energy solutions for sustainable and cost-effective power.",
+      features: ["Rooftop solar design", "EPC and installation", "O&M and monitoring"]
     }
   ]
 
