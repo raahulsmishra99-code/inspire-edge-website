@@ -9,7 +9,7 @@ import Navigation from '@/components/Navigation'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-orange-50">
+    <main className="min-h-screen">
       <Navigation />
       
       <motion.div

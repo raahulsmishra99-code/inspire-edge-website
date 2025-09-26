@@ -8,7 +8,7 @@
   }
   
   body {
-    @apply bg-white text-dark-800 font-sans;
+    @apply bg-gradient-to-r from-green-300 to-white text-dark-800 font-sans;
   }
 }
 

@@ -57,7 +57,7 @@ export default function HeroSection() {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-gradient-to-r from-green-100 to-white">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div

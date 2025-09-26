@@ -53,7 +53,7 @@ export default function AboutSection() {
   }
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+    <section id="about" className="py-20 bg-gradient-to-r from-green-100 to-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <motion.div
