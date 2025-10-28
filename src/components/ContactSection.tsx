@@ -20,19 +20,19 @@ export default function ContactSection() {
     {
       icon: Mail,
       title: "Email",
-      value: "info@inspireedge.com",
-      link: "mailto:info@inspireedge.com"
+      value: "raahulsmishra@inspireedgeventures.com",
+      link: "raahulsmishra@inspireedgeventures.com"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      value: "+91 9935052299",
+      link: "tel:+91 9935052299"
     },
     {
       icon: MapPin,
       title: "Address",
-      value: "123 Innovation Drive, Tech City, TC 12345",
+      value: "10/93, Sector 10, Indira Nagar",
       link: "#"
     }
   ]
