@@ -2,10 +2,10 @@
 
 import React, { useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, CheckCircle, type LucideIcon } from 'lucide-react'
 
 type ContactItem = {
-  icon: React.ComponentType<{ size?: number; className?: string }>
+  icon: LucideIcon
   title: string
   value: string
   href?: string | null
@@ -27,13 +27,12 @@ export default function ContactSection() {
     message: '',
   })
 
-  // Updated details + click behaviors
   const contactInfo: ContactItem[] = [
     {
       icon: Mail,
       title: 'Email',
       value: 'raahulsmishra@inspireedgeventures.com',
-      href: gmailComposeLink('raahulsmishra@inspireedgeventures.com'), // open Gmail compose
+      href: gmailComposeLink('raahulsmishra@inspireedgeventures.com'),
       external: true,
     },
     {
@@ -46,7 +45,7 @@ export default function ContactSection() {
       icon: MapPin,
       title: 'Address',
       value: '10/93, Sector 10, Indira Nagar, Lucknow, Uttar Pradesh – 226016',
-      href: null, // NOT clickable
+      href: null, // not clickable
     },
   ]
 
@@ -78,6 +77,24 @@ export default function ContactSection() {
     setTimeout(() => setIsSubmitted(false), 3000)
     setFormData({ name: '', email: '', company: '', message: '' })
   }
+
+  const CardInner = (InfoIcon: LucideIcon, title: string, value: string) => (
+    <div className="block rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-blue-50 p-5 transition-all duration-300 hover:border-primary-300 sm:p-6">
+      <div className="flex items-start space-x-4">
+        <motion.div
+          whileHover={{ rotate: 360 }}
+          transition={{ duration: 0.6 }}
+          className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-accent-500"
+        >
+          <InfoIcon size={24} className="text-white" />
+        </motion.div>
+        <div className="min-w-0">
+          <h4 className="mb-1 text-base font-semibold text-dark-800 sm:text-lg">{title}</h4>
+          <p className="truncate text-sm text-dark-600 sm:text-base">{value}</p>
+        </div>
+      </div>
+    </div>
+  )
 
   return (
     <section id="contact" className="relative overflow-hidden bg-white py-14 sm:py-16 md:py-20">
@@ -224,25 +241,8 @@ export default function ContactSection() {
             {/* Contact Info Cards */}
             <div className="space-y-5 sm:space-y-6">
               {contactInfo.map((info, index) => {
-                const CardInner = (
-                  <div className="block rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-blue-50 p-5 transition-all duration-300 hover:border-primary-300 sm:p-6">
-                    <div className="flex items-start space-x-4">
-                      <motion.div
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.6 }}
-                        className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-accent-500"
-                      >
-                        <info.icon size={24} className="text-white" />
-                      </motion.div>
-                      <div className="min-w-0">
-                        <h4 className="mb-1 text-base font-semibold text-dark-800 sm:text-lg">{info.title}</h4>
-                        <p className="truncate text-sm text-dark-600 sm:text-base">{info.value}</p>
-                      </div>
-                    </div>
-                  </div>
-                )
+                const inner = CardInner(info.icon, info.title, info.value)
 
-                // Clickable for email/phone; non-clickable for address
                 return info.href ? (
                   <motion.a
                     key={info.title}
@@ -255,7 +255,7 @@ export default function ContactSection() {
                     {...(info.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     aria-label={`${info.title}: ${info.value}`}
                   >
-                    {CardInner}
+                    {inner}
                   </motion.a>
                 ) : (
                   <motion.div
@@ -266,7 +266,7 @@ export default function ContactSection() {
                     className="cursor-default"
                     aria-label={`${info.title}: ${info.value}`}
                   >
-                    {CardInner}
+                    {inner}
                   </motion.div>
                 )
               })}
